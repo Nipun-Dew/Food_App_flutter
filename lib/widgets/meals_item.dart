@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/models/meal.dart';
 import '../models/meal.dart';
+import '../Screens/meal_details_screen.dart';
 
 class MealsItem extends StatelessWidget {
   final Meal meal;
 
   MealsItem(this.meal);
 
-  void selectMeal() {}
+  void selectMeal(BuildContext context, Meal meal) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+      return MealDetailsScreen(meal.title);
+    }));
+  }
 
   String selectComplexity(Meal meal) {
     switch (meal.complexity) {
@@ -94,7 +99,7 @@ class MealsItem extends StatelessWidget {
           ],
         ),
       ),
-      onTap: selectMeal,
+      onTap: () => selectMeal(context, meal),
     );
   }
 }
