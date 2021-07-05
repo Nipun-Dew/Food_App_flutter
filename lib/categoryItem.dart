@@ -16,21 +16,23 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => selectCategory(context),
-      radius: 10,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [
-            color.withOpacity(0.7),
-            color,
-          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-          borderRadius: BorderRadius.circular(18),
-        ),
-        padding: EdgeInsets.all(10),
-        child: Text(
-          title,
-          style: Theme.of(context).textTheme.headline6,
+    return Ink(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          color.withOpacity(0.7),
+          color,
+        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: InkWell(
+        onTap: () => selectCategory(context),
+        radius: 25,
+        child: Container(
+          margin: EdgeInsets.all(10),
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.headline6,
+          ),
         ),
       ),
     );
