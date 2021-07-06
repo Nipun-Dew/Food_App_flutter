@@ -68,7 +68,20 @@ class MealsItem extends StatelessWidget {
               ],
             ),
             Container(
-              padding: EdgeInsets.all(15),
+              child: Text(
+                meal.title,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              padding: EdgeInsets.only(top: 10, bottom: 6),
+            ),
+            Divider(
+              thickness: 0.8,
+            ),
+            Container(
+              padding: EdgeInsets.only(left: 15, right: 15, top: 7, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

@@ -16,7 +16,9 @@ class MealDetailsScreen extends StatelessWidget {
         child: Container(
           child: Column(
             children: [
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               Container(
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
@@ -70,14 +72,18 @@ class MealDetailsScreen extends StatelessWidget {
                         radius: 18,
                         foregroundColor: Theme.of(context).accentColor,
                         child: Text(
-                          "${meal.steps.indexOf(item)+1}",
-                          style: TextStyle(color: Colors.white,),
+                          "${meal.steps.indexOf(item) + 1}",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       title: Text(item),
                     );
                   }).toList())),
-              SizedBox(height: 10,)
+              SizedBox(
+                height: 10,
+              )
             ],
           ),
         ),
