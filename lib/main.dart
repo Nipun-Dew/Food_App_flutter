@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screens/categories_screen.dart';
+import 'Screens/tabs_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold
                 ),
               )),
-      home: Categories(),
+      home: TabScreen(),
     );
   }
 }

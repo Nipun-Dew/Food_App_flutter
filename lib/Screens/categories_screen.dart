@@ -5,11 +5,7 @@ import '../category_data.dart';
 class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Meal Deal!",),
-      ),
-      body: GridView(
+    return GridView(
           padding: EdgeInsets.only(
             top: 20,
             bottom: 10,
@@ -31,7 +27,6 @@ class Categories extends StatelessWidget {
               mainAxisSpacing: 30,
               crossAxisSpacing: 30,
             ),
-      ),
-    );
+      );
   }
 }
