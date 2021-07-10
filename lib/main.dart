@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'Screens/tabs_bottom_screen.dart';
 import 'Screens/tabs_screen.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
                 ),
               )),
       home: TabScreen(),
+      //home: TabsBottom(),
     );
   }
 }
