@@ -38,7 +38,7 @@ class MyDrawer extends StatelessWidget {
         ),
         ListTile(
           title: Text(
-            "Favourites",
+            "Meals",
             style: TextStyle(
               color: Theme.of(context).primaryColor,
               fontSize: 18,
@@ -51,13 +51,13 @@ class MyDrawer extends StatelessWidget {
             color: Theme.of(context).accentColor,
           ),
           onTap: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => TabScreen()));
           },
         ),
         ListTile(
           onTap: () {
-            Navigator.of(context).push(
+            Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => FilterScreen()));
           },
           title: Text(
