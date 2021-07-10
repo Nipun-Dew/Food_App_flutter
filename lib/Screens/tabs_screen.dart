@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import './categories_screen.dart';
 import './favourites_screen.dart';
 import './settings_screen.dart';
+import '../widgets/drawer.dart';
+
 
 class TabScreen extends StatelessWidget {
   @override
@@ -28,6 +30,9 @@ class TabScreen extends StatelessWidget {
               )
             ],
           ),
+        ),
+        drawer: Drawer(
+          child: MyDrawer()
         ),
         body: TabBarView(children: [
           Categories(),
