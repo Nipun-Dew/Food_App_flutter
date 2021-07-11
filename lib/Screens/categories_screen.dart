@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/providers/meals_provider.dart';
+import 'package:provider/provider.dart';
 import '../widgets/category_Item.dart';
-import '../category_data.dart';
 
 class Categories extends StatelessWidget {
   @override
@@ -12,7 +13,7 @@ class Categories extends StatelessWidget {
             left: 18,
             right: 18,
           ),
-            children: CAT_LIST
+            children: context.read<MealsData>().CAT_LIST
                 .map(
                   (cat) => CategoryItem(
                     color: cat.color,

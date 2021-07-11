@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/providers/filters_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/drawer.dart';
 
@@ -8,13 +10,15 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-  bool isGlutenFree = false;
-  bool isLactoseFree = false;
-  bool isVegan = false;
-  bool isVegetarian = false;
 
   @override
   Widget build(BuildContext context) {
+
+    bool isGlutenFree = Provider.of<FilterStates>(context, listen: false).getGluten;
+    bool isLactoseFree = Provider.of<FilterStates>(context, listen: false).getLactos;
+    bool isVegan = Provider.of<FilterStates>(context, listen: false).getVegan;
+    bool isVegetarian = Provider.of<FilterStates>(context, listen: false).getVegetarian;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Filter"),
@@ -35,6 +39,7 @@ class _FilterScreenState extends State<FilterScreen> {
             subtitle: Text("Show only foods which Gluten free"),
             value: isGlutenFree,
             onChanged: (val) {
+              Provider.of<FilterStates>(context, listen: false).setGluten = val;
               setState(() {
                 isGlutenFree = val;
               });
@@ -45,6 +50,7 @@ class _FilterScreenState extends State<FilterScreen> {
             subtitle: Text("Show only foods which Lactose free"),
             value: isLactoseFree,
             onChanged: (val) {
+              Provider.of<FilterStates>(context, listen: false).setLactos = val;
               setState(() {
                 isLactoseFree = val;
               });
@@ -55,6 +61,7 @@ class _FilterScreenState extends State<FilterScreen> {
             subtitle: Text("Show Vegan food only"),
             value: isVegan,
             onChanged: (val) {
+              Provider.of<FilterStates>(context, listen: false).setVegan = val;
               setState(() {
                 isVegan = val;
               });
@@ -65,6 +72,7 @@ class _FilterScreenState extends State<FilterScreen> {
             subtitle: Text("Show Vegetarian food only"),
             value: isVegetarian,
             onChanged: (val) {
+              Provider.of<FilterStates>(context, listen: false).setVegetarian = val;
               setState(() {
                 isVegetarian = val;
               });
