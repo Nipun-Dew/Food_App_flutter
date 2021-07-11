@@ -370,4 +370,16 @@ class MealsData with ChangeNotifier {
     ),
   ];
 
+  List<Meal> favMeals = [];
+
+  void addFavMeals(Meal favMeal) {
+    favMeals.add(favMeal);
+    notifyListeners();
+  }
+
+  void removeFavMeals(Meal favMeal) {
+    favMeals.remove(favMeal);
+    notifyListeners();
+  }
+
 }

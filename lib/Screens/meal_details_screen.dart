@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
 import '../models/meal.dart';
+import 'package:provider/provider.dart';
+import '../providers/meals_provider.dart';
 
-class MealDetailsScreen extends StatelessWidget {
+class MealDetailsScreen extends StatefulWidget {
   final Meal meal;
 
   MealDetailsScreen(this.meal);
 
   @override
+  _MealDetailsScreenState createState() => _MealDetailsScreenState();
+}
+
+class _MealDetailsScreenState extends State<MealDetailsScreen> {
+  @override
   Widget build(BuildContext context) {
+    bool isFavourite = Provider.of<MealsData>(context, listen: true)
+        .favMeals
+        .contains(widget.meal);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(meal.title),
+        title: Text(widget.meal.title),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -23,7 +34,7 @@ class MealDetailsScreen extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 child: ClipRRect(
                   child: Image.network(
-                    meal.imageUrl,
+                    widget.meal.imageUrl,
                     width: double.infinity,
                     height: 220,
                     fit: BoxFit.cover,
@@ -43,7 +54,7 @@ class MealDetailsScreen extends StatelessWidget {
                       EdgeInsets.only(left: 15, top: 7, right: 15, bottom: 7),
                   margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
                   child: Column(
-                      children: meal.ingredients.map((item) {
+                      children: widget.meal.ingredients.map((item) {
                     return Row(
                       children: [
                         Icon(
@@ -66,13 +77,13 @@ class MealDetailsScreen extends StatelessWidget {
               Container(
                   margin: EdgeInsets.all(5),
                   child: Column(
-                      children: meal.steps.map((item) {
+                      children: widget.meal.steps.map((item) {
                     return ListTile(
                       leading: CircleAvatar(
                         radius: 18,
                         foregroundColor: Theme.of(context).accentColor,
                         child: Text(
-                          "${meal.steps.indexOf(item) + 1}",
+                          "${widget.meal.steps.indexOf(item) + 1}",
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -87,6 +98,24 @@ class MealDetailsScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: isFavourite
+            ? Icon(Icons.favorite)
+            : Icon(Icons.favorite_outline),
+        onPressed: () {
+          setState(() {
+            isFavourite = !isFavourite;
+          });
+          if(!isFavourite) {
+            Provider.of<MealsData>(context, listen: false)
+                .removeFavMeals(widget.meal);
+          }
+          else {
+            Provider.of<MealsData>(context, listen: false)
+              .addFavMeals(widget.meal);
+          }
+        },
       ),
     );
   }
