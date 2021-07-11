@@ -6,12 +6,17 @@ import '../providers/meals_provider.dart';
 class Favourites extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: Provider.of<MealsData>(context, listen: true).favMeals.length,
-      itemBuilder: (context, index) {
-        return MealsItem(
-            Provider.of<MealsData>(context, listen: true).favMeals[index]);
-      },
-    );
+    return Provider.of<MealsData>(context, listen: true).favMeals.isEmpty
+        ? Center(
+            child: Text("There is no favourite Meals!"),
+          )
+        : ListView.builder(
+            itemCount:
+                Provider.of<MealsData>(context, listen: true).favMeals.length,
+            itemBuilder: (context, index) {
+              return MealsItem(Provider.of<MealsData>(context, listen: true)
+                  .favMeals[index]);
+            },
+          );
   }
 }
